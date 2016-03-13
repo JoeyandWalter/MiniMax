@@ -84,12 +84,12 @@ if __name__ == '__main__':
 			for i in range(len(node.children)):
 				n_child = node.children[i]
 				i_val = MinMax(n_child, i_depth, -i_curPlayer)
-				if(abs(i_curPlayer*maxsize-i_val))<=(abs(i_curPlayer*maxsize-i_bestValue)):
+				#corrected issue where current algorithm would pick up 2 sticks when only 1 remained and lose the game
+				if(abs(i_curPlayer*maxsize-i_val))<=(abs(i_curPlayer*maxsize-i_bestValue)) and i_stickTotal != 1:
 					i_bestValue = i_val
 					bestChoice = i
-					
-			bestChoice +=1
-			print("Comp Chooses: " + str(bestChoice)+ "\tBased on value: " +str(i_bestValue))
+				else:
+				    bestChoice = 0
 			
 		i_stickTotal -= bestChoice
 		WinCheck(i_stickTotal, i_curPlayer)
