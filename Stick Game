@@ -67,8 +67,8 @@ def WinCheck(i_sticks, i_playerNum):
 	return 1
 			
 if __name__ == '__main__':
-	i_stickTotal = randint(11,17)
-	i_depth = 4
+	i_stickTotal = randint(15,24)
+	i_depth = 10
 	i_curPlayer = 1
 	print("""instructions be the player to pick up the last stick You can only pick up one(1) or two(2) sticks at a time""")
 	
