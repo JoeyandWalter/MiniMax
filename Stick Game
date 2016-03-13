@@ -69,7 +69,7 @@ def WinCheck(i_sticks, i_playerNum):
 if __name__ == '__main__':
 	i_stickTotal = randint(11,17)
 	i_depth = 4
-	i_curPlayer = 11
+	i_curPlayer = 1
 	print("""instructions be the player to pick up the last stick You can only pick up one(1) or two(2) sticks at a time""")
 	
 	while(i_stickTotal>0):
@@ -84,12 +84,10 @@ if __name__ == '__main__':
 			for i in range(len(node.children)):
 				n_child = node.children[i]
 				i_val = MinMax(n_child, i_depth, -i_curPlayer)
-				#corrected issue where current algorithm would pick up 2 sticks when only 1 remained and lose the game
-				if(abs(i_curPlayer*maxsize-i_val))<=(abs(i_curPlayer*maxsize-i_bestValue)) and i_stickTotal != 1:
+				if(abs(i_curPlayer*maxsize-i_val))<=(abs(i_curPlayer*maxsize-i_bestValue)):
 					i_bestValue = i_val
 					bestChoice = i
-				else:
-				    bestChoice = 0
+
 			
 		i_stickTotal -= bestChoice
 		WinCheck(i_stickTotal, i_curPlayer)
